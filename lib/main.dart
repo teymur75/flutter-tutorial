@@ -5,9 +5,15 @@ void main() {
 }
 
 
-class TestApp extends StatelessWidget {
+class TestApp extends StatefulWidget {
   const TestApp({super.key});
 
+  @override
+  State<TestApp> createState() => _TestAppState();
+}
+
+class _TestAppState extends State<TestApp> {
+  int value=0;
   @override
   Widget build(BuildContext context) {
     return  MaterialApp(
@@ -18,11 +24,15 @@ class TestApp extends StatelessWidget {
           backgroundColor: Colors.red,
           leading: const Text("LOGO"),
         ),
-        body:const Center(
-          child: Text("Body Flutter"),
+        body: Center(
+          child: Text(value.toString()),
         ),
         floatingActionButton: FloatingActionButton(
-          onPressed: ()=>{},
+          onPressed: ()=>{
+            setState(() {
+              value++;
+            })
+          },
           child:const Text("+"),
       ),
       )
@@ -30,3 +40,33 @@ class TestApp extends StatelessWidget {
 
   }
 }
+// class Test extends StatefulWidget {
+//   const Test({super.key});
+
+//   @override
+//   State<Test> createState() => _TestState();
+// }
+
+// class _TestState extends State<Test> {
+
+// int value=0;
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       home: Scaffold(
+//         body: Center(
+//           child: Column(
+//             mainAxisAlignment: MainAxisAlignment.center,
+//             children:[
+//             Text(value.toString()),
+//             ElevatedButton(onPressed: () {
+//               setState(() {
+//                 value++;
+//               });
+//             }, child:const Text("Press"))
+//           ],
+//       ),
+//     ))
+//     );
+// }}
