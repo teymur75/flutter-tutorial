@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:hexcolor/hexcolor.dart';
+import 'Constants/constant.dart';
 
 void main() {
   runApp(const TestApp());
 }
-
 
 class TestApp extends StatefulWidget {
   const TestApp({super.key});
@@ -13,31 +14,42 @@ class TestApp extends StatefulWidget {
 }
 
 class _TestAppState extends State<TestApp> {
-  int value=0;
+  int value = 0;
   @override
   Widget build(BuildContext context) {
-    return  MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title:const Text("First App"),
-          centerTitle: true,
-          backgroundColor: Colors.red,
-          leading: const Text("LOGO"),
-        ),
-        body: Center(
-          child: Text(value.toString()),
-        ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: ()=>{
-            setState(() {
-              value++;
-            })
-          },
-          child:const Text("+"),
+    return MaterialApp(
+        home: Scaffold(
+      appBar: AppBar(
+        title: const Text("First App"),
+        centerTitle: true,
+        backgroundColor: HexColor(background),
+        leading: const Text("LOGO"),
       ),
-      )
-    );
-
+      body: Center(
+          child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(value.toString()),
+           Text(
+            "Teymur Rahimli",
+            style: TextStyle(
+              fontSize: 40,
+              fontWeight: FontWeight.bold,
+              letterSpacing: 2,
+              color: HexColor(primaryColor),
+            ),
+          )
+        ],
+      )),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => {
+          setState(() {
+            value++;
+          })
+        },
+        child: const Text("+"),
+      ),
+    ));
   }
 }
 // class Test extends StatefulWidget {
